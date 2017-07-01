@@ -1,1 +1,55 @@
-<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,user-scalable=0"><title>test</title><link href=./static/css/app.bfc93cb2f36b84ae379d022e3d92507f.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=./static/js/manifest.4cdfea81e960fb7c49a7.js></script><script type=text/javascript src=./static/js/vendor.9ce5e247854436b12509.js></script><script type=text/javascript src=./static/js/app.f8a37eb7b7a72d954b32.js></script></body></html>
+<!DOCTYPE html><html lang=zh-CN><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>cbpc</title><link rel=icon type=image/png sizes=32x32 href=/static/img/icons/logo.png><link rel=icon type=image/png sizes=16x16 href=/static/img/icons/logo.png><!--[if IE]><link rel="shortcut icon" href="/static/img/icons/favicon.ico"><![endif]--><link rel=manifest href=/static/manifest.json><meta name=theme-color content=#FFFFFF><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black><meta name=apple-mobile-web-app-title content=cbpc-pwa><link rel=apple-touch-icon href=/static/img/icons/logo.png><meta name=msapplication-TileImage content=/static/img/icons/logo.png><meta name=msapplication-TileColor content=#000000><link rel=prefetch href=./static/js/0.0b9bff5d2574724b3d52.js as=script><link rel=prefetch href=./static/js/1.4d0e6d612da112639868.js as=script><link rel=prefetch href=./static/js/2.bae57ff20eb92388bb10.js as=script><link rel=prefetch href=./static/js/3.7a783a8601ae8cc1b4b3.js as=script><link rel=prefetch href=./static/js/4.6f1cc9d90a9c95e6482e.js as=script><link rel=prefetch href=./static/js/5.e8c60b5fe2bbe65f9f4a.js as=script><link rel=prefetch href=./static/js/6.e2a073f61e3b7a1895fc.js as=script><link rel=prefetch href=./static/js/7.5ef740835a2d539aef3b.js as=script><link rel=prefetch href=./static/js/8.66e25f23713b0f19ffd0.js as=script><link rel=prefetch href=./static/js/9.47e9327f32044c4ea40a.js as=script><link rel=prefetch href=./static/js/10.068d978ce8b5b73b743a.js as=script><link rel=preload href=./static/js/vendor.e3c0987f5501bc657c98.js as=script><link rel=preload href=./static/js/app.688610e23ef953eb4470.js as=script><link rel=preload href=./static/css/app.160f017ecff5e109b3e71e58ec49d316.css as=style><link rel=preload href=./static/js/manifest.84b89a3566a23b3b941d.js as=script><link href=./static/css/app.160f017ecff5e109b3e71e58ec49d316.css rel=stylesheet></head><body><div id=app>数据加载失败，网络异常.</div><script>(function() {
+  'use strict';
+
+  // Check to make sure service workers are supported in the current browser,
+  // and that the current page is accessed from a secure origin. Using a
+  // service worker from an insecure origin will trigger JS console errors.
+  const isLocalhost = Boolean(window.location.hostname === 'localhost' ||
+      // [::1] is the IPv6 localhost address.
+      window.location.hostname === '[::1]' ||
+      // 127.0.0.1/8 is considered localhost for IPv4.
+      window.location.hostname.match(
+        /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
+      )
+    );
+
+  window.addEventListener('load', function() {
+      if ('serviceWorker' in navigator &&
+          (window.location.protocol === 'https:' || isLocalhost)) {
+        navigator.serviceWorker.register('service-worker.js')
+        .then(function(registration) {
+          // updatefound is fired if service-worker.js changes.
+          registration.onupdatefound = function() {
+            // updatefound is also fired the very first time the SW is installed,
+            // and there's no need to prompt for a reload at that point.
+            // So check here to see if the page is already controlled,
+            // i.e. whether there's an existing service worker.
+            if (navigator.serviceWorker.controller) {
+              // The updatefound event implies that registration.installing is set
+              const installingWorker = registration.installing;
+
+              installingWorker.onstatechange = function() {
+                switch (installingWorker.state) {
+                  case 'installed':
+                    // At this point, the old content will have been purged and the
+                    // fresh content will have been added to the cache.
+                    // It's the perfect time to display a "New content is
+                    // available; please refresh." message in the page's interface.
+                    break;
+
+                  case 'redundant':
+                    throw new Error('The installing ' +
+                                    'service worker became redundant.');
+
+                  default:
+                    // Ignore
+                }
+              };
+            }
+          };
+        }).catch(function(e) {
+          console.error('Error during service worker registration:', e);
+        });
+      }
+  });
+})();</script><script type=text/javascript src=./static/js/manifest.84b89a3566a23b3b941d.js></script><script type=text/javascript src=./static/js/vendor.e3c0987f5501bc657c98.js></script><script type=text/javascript src=./static/js/app.688610e23ef953eb4470.js></script></body></html>
